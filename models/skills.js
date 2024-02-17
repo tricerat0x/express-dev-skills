@@ -39,14 +39,26 @@ const skills = [
   
   function getAll() {
     return skills;
-  }
+  };
 
   function getOne(id) {
 
     id = parseInt(id);
 
     return skills.find(skill => skill.id === id);
+  };
+
+
+   function create(skill) {
+
+    const highestId = Math.max(...skills.map(skill => skill.id));
+
+    skill.id = highestId + 1
+
+    skill.description = 'TBA'
+    skill.level = "Beginner"
+    skills.push(skill);
   }
 
-  module.exports = { getAll, getOne  };
+  module.exports = { getAll, getOne, create };
   

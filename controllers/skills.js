@@ -10,8 +10,18 @@ function index(req, res) {
     res.render('show', {
       skill: Skill.getOne(req.params.id),
     });
+  };
+
+  function newSkill(req, res) {
+    res.render('new', { title: 'New Skill' });
+  };
+
+  	
+function create(req, res) {
+    Skill.create(req.body);
+    res.redirect('/');
   }
 
 module.exports = {
-  index, show
+  index, show, new: newSkill, create,
 };
