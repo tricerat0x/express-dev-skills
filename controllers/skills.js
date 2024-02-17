@@ -20,8 +20,14 @@ function index(req, res) {
 function create(req, res) {
     Skill.create(req.body);
     res.redirect('/');
+  };
+
+
+  function delSkill(req, res) {
+    Skill.deleteOne(req.params.id);
+    res.redirect('/');
   }
 
 module.exports = {
-  index, show, new: newSkill, create,
+  index, show, new: newSkill, create, delSkill, 
 };

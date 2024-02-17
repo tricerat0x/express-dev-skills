@@ -2,6 +2,8 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const methodOverride = require('method-override');
+
 const port = 3000;
 const skillsRouter = require('./routes/skills')
 
@@ -17,6 +19,7 @@ next()
 app.use(logger('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(methodOverride('_method')); 
 
 app.use('/', skillsRouter);
 
